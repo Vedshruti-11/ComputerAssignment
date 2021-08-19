@@ -16,17 +16,17 @@ int search(int arr[],int l, int r, int x)
 
 int main()
 {
-    int r,x,pos,arr[MAX];
+    int n,x,pos,arr[MAX];
     cout<<"ENTER THE NO OF ELEMENTS IN AN ARRAY: "<<endl;
-    cin>>r;
+    cin>>n;
     cout<<"ENTER THE ELEMENTS OF THE ARRAY: "<<endl;
-    for(int i=0;i<r;i++)
+    for(int i=0;i<n;i++)
     {
         cin>>arr[i];
     }
     cout<<"ENTER THE ELEMENT TO BE SEARCHED:"<<endl;
     cin>>x;
-    pos=search(arr,0,r,x);
+    pos=search(arr,0,n-1,x);
     if(pos==-1)
         cout<<"SEARCH ELEMENT NOT FOUND..."<<endl;
     else
