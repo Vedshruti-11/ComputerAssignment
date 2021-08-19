@@ -13,10 +13,10 @@ int binary_search(int arr[],int high,int low,int key)
         return mid;
 
         else if(arr[mid]>key)
-        return(arr,mid-1,low,key);
+        return binary_search(arr,mid-1,low,key);
 
         else if(arr[mid]<key)
-        return(arr,high,mid-1,key);
+        return binary_search(arr,high,mid+1,key);
     }
 
     return -1;
