@@ -1,0 +1,83 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Stack {
+    int *arr, top, size;
+public:
+    Stack(int size) {
+        top = -1;
+        arr = new int[size];
+        this->size = size;
+    }
+
+    int isFull() {
+        if (top == size - 1)
+            return 1;
+        else
+            return 0;
+    }
+
+    int isEmpty() {
+        if (top == -1)
+            return 1;
+        else
+            return 0;
+    }
+
+    void push(int num) {
+        if (!isFull()) {
+            top++;
+            arr[top] = num;
+        } else
+            cout << "Stack is full cannot make any more entries\n";
+    }
+
+    int pop() {
+        if (!isEmpty()) {
+            int num = arr[top];
+            top--;
+            return num;
+        } else {
+            cout << "Stack is empty no more popping possible\n";
+            return INT_MAX;
+        }
+    }
+
+    int peek() {
+        return arr[top];
+    }
+
+};
+
+int main() {
+    string infix;
+    cin >> infix;
+    Stack stack(100);
+    string postfix;
+    for (char ch : infix) {
+        if (ch >= '0' && ch <= '9')
+            stack.push(ch - '0');
+        else {
+            int a = stack.pop();
+            int b = stack.pop();
+            switch (ch) {
+                case '+':
+                    stack.push(a + b);
+                    break;
+                case '-':
+                    stack.push(b - a);
+                    break;
+                case '*':
+                    stack.push(a * b);
+                    break;
+                case '/':
+                    stack.push(b / a);
+                    break;
+            }
+        }
+    }
+    int ans = stack.pop();
+    cout << ans << "\n";
+    return 0;
+}
